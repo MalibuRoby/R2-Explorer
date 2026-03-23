@@ -35,7 +35,8 @@ jobs:
         run: cd packages/github-action && npm install && npm install --save r2-explorer@latest
 
       - name: Deploy
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CF_API_TOKEN }}
-          workingDirectory: "packages/github-action"
+        run: npx wrangler deploy
+        working-directory: packages/github-action
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
