@@ -144,8 +144,12 @@ export function R2Explorer(config?: R2ExplorerConfig) {
 	openapi.post("/api/emails/send", SendEmail);
 
   // No Share ID? Send to 404
-  openapi.get("/share", (c) => Response.json({ msg: "404, not found!" }, { status: 404 }));
-  openapi.get("/share/", (c) => Response.json({ msg: "404, not found!" }, { status: 404 }));
+  openapi.get("/share", (c) =>
+  	Response.json({ msg: "404, not found!" }, { status: 404 }),
+  );
+  openapi.get("/share/", (c) =>
+  	Response.json({ msg: "404, not found!" }, { status: 404 }),
+  );
   
 	// Public share access (no authentication required)
 	openapi.get("/share/:shareId", GetShareLink);
